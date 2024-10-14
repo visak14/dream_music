@@ -36,7 +36,7 @@ function App() {
 
   const fetchSongs = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/song/list");
+      const response = await axios.get("https://dream-music-backend-zuvs.onrender.com/song/list");
       const songData = response.data.data;
       setSongs(songData);
     } catch (error) {
