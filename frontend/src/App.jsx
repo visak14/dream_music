@@ -248,7 +248,7 @@ console.log(songs)
                 Radio
               </a>
             </nav>
-            <div className="relative w-full max-w-md mx-auto md:w-32 lg:w-full ">
+            <div className="relative w-full max-w-md mx-auto md:w-68 lg:w-full ">
               <input
                 type="text"
                 placeholder="Search"
