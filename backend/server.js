@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import songRouter from './routes/songRoute.js'; // Update route import
+import songRouter from './routes/songRoute.js';
 
 dotenv.config();
 
