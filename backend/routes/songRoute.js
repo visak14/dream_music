@@ -7,7 +7,7 @@ const songRouter = express.Router();
 const storage = multer.diskStorage({
     destination: "uploads",
     filename: (req, file, cb) => {
-        cb(null, `${Date.now()}-${file.originalname}`); // Use backticks
+        cb(null, `${Date.now()}-${file.originalname}`); 
     },
 });
 
@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
 const upload = multer({
     storage: storage,
     fileFilter: (req, file, cb) => {
-        // Allow only mp3 for audio and png/jpg/jpeg for images
+      
         if (file.mimetype === 'audio/mpeg' || file.mimetype === 'audio/mp3' || 
             file.mimetype === 'image/png' || file.mimetype === 'image/jpeg' || 
             file.mimetype === 'image/jpg') {
@@ -29,11 +29,11 @@ const upload = multer({
 
 
 songRouter.post("/add", upload.fields([
-    { name: 'file', maxCount: 1 },  // For the audio file
-    { name: 'image', maxCount: 1 }  // For the image file
+    { name: 'file', maxCount: 1 },  
+    { name: 'image', maxCount: 1 } 
 ]), addSong);
 
-songRouter.get("/list", listSong);  // Add the route for listing songs
+songRouter.get("/list", listSong);  
 songRouter.post("/remove", removeSong);
 
 export default songRouter;
