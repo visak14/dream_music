@@ -43,7 +43,7 @@ function App() {
       console.error("Error fetching songs:", error);
     }
   };
-console.log(songs)
+
   useEffect(() => {
     fetchSongs();
   }, []);
