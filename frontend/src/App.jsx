@@ -75,7 +75,7 @@ console.log(songs)
     const audioElement = audioRef.current;
 
     if (audioElement) {
-      audioElement.src = `http://localhost:4000/songs/${song.file}`;
+      audioElement.src = `https://dream-music-backend-zuvs.onrender.com/songs/${song.file}`;
       audioElement.play();
       setIsPlaying(true);
       setCurrentSongIndex(index);
