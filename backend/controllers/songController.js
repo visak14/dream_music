@@ -1,22 +1,22 @@
-import songModel from "../models/songModel.js";  // Update the model name
+import songModel from "../models/songModel.js";  
 import fs from 'fs';
 const addSong = async (req, res) => {
-    const file = req.files['file']?.[0]; // Extract the file from the request
-    const image = req.files['image']?.[0]; // Extract the image from the request
+    const file = req.files['file']?.[0]; 
+    const image = req.files['image']?.[0]; 
 
     if (!file || !image) {
         return res.status(400).json({ success: false, message: "Both audio file and image are required" });
     }
 
-    const file_filename = file.filename;   // Audio file path
-    const image_filename = image.filename; // Image file path
+    const file_filename = file.filename;   
+    const image_filename = image.filename;
 
     const song = new songModel({
         name: req.body.name,
         description: req.body.description,
-        file: file_filename,       // Save the file path in the DB
-        listeners: 0,              // Initial listeners count
-        image: image_filename      // Save the image file path in the DB
+        file: file_filename,       
+        listeners: 0,              
+        image: image_filename     
     });
 
     try {
@@ -33,10 +33,10 @@ const addSong = async (req, res) => {
 const listSong = async (req, res) => {
     try {
         const songs = await songModel.find({});
-        const baseUrl = `${req.protocol}://${req.get('host')}/songs/`; // Base URL for images
+        const baseUrl = `${req.protocol}://${req.get('host')}/songs/`; 
         const updatedSongs = songs.map(song => ({
             ...song.toObject(),
-            image: `${baseUrl}${song.image}` // Prepend the base URL to the image filename
+            image: `${baseUrl}${song.image}` 
         }));
         res.json({ success: true, data: updatedSongs });
     } catch (error) {
